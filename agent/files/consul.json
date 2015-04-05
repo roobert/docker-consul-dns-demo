@@ -1,4 +1,4 @@
 {
-  "start_join": [ "consul0.node.consul" ],
+  "start_join": [ "consul-server.node.robs" ],
   "data_dir": "/var/lib/consul"
 }
