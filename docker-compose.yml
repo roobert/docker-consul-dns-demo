@@ -1,0 +1,55 @@
+#
+# consul server:
+#
+# docker run \
+#   --name=consul-server \
+#   --rm \
+#   -p 8400:8400 \
+#   -p 8500:8500 \
+#   -p 8600:53/udp \
+#   -h consul0 \
+#   --dns=172.17.42.1 \
+#   --dns-search=node.robs 
+#   roobert/consul-server:0.5.1-master
+server:
+  name: consul-server
+
+  ports:
+    - "8400:8400"
+    - "8500:8500"
+    - "8600:53/udp"
+
+  hostname: consul-server
+  dns: 172.17.42.1
+  dns_search: node.robs
+
+  build: server
+
+#
+# consul agent:
+#
+# docker run \
+#   --name=test0 \
+#   --link consul-server:consul-server \
+#   --rm \
+#   -ti \
+#   -h test0 \
+#   --dns=172.17.42.1 \
+#   --dns-search=node.robs 
+#   roobert/consul-agent:0.5.1-master \
+#   /bin/bash
+#
+agent:
+  name: consul-agent
+  links:
+    - server
+
+  tty: true
+  stdin_open: true
+
+  hostname: consul-agent
+  dns: 172.17.42.1
+  dns_search: node.robs
+
+  build: agent
+  command: /bin/bash
