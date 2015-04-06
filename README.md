@@ -1,4 +1,8 @@
-# Docker Consul DNS Demo
+# docker consul DNS demo
+
+## configure DNS clients
+
+any machines you wish to be able to resolve docker container hostnames:
 
 ```
 echo 'interface=docker0'          > /etc/NetworkManager/dnsmasq.d/docker
@@ -6,8 +10,7 @@ echo 'server=/dc0/127.0.0.1#8600' > /etc/NetworkManager/dnsmasq.d/consul
 /etc/init.d/network-manager restart
 ```
 
-
-## deploy methods
+## depoy containers
 
 ### docker registry
 
