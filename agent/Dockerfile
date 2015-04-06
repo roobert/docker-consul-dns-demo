@@ -12,4 +12,11 @@ RUN apt-get -y upgrade
 RUN apt-get install -y consul
 
 ENTRYPOINT [ "consul", "agent" ]
-CMD [ "-config-dir", "/etc/consul.d/", "-dc", "dc0", "-retry-join", "consul-server.node.dc0", "-retry-interval", "10s", "-data-dir", "/var/lib/consul" ]
+
+CMD [ \
+  "-config-dir", "/etc/consul.d/",         \
+  "-dc", "dc0",                            \
+  "-retry-join", "consul-server.node.dc0", \
+  "-retry-interval", "10s",                \
+  "-data-dir", "/var/lib/consul"           \
+]
