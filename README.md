@@ -19,11 +19,13 @@ pick a method..
 #### server
 ```
 cd server && ./build.sh && ./run.sh
+docker exec consul-agent ping -c5 consul-agent
 ```
 
 #### client
 ```
 cd agent && ./build.sh && ./run.sh
+docker exec consul-agent ping -c5 consul-server
 ```
 
 ### docker registry
@@ -31,11 +33,13 @@ cd agent && ./build.sh && ./run.sh
 #### server
 ```
 git pull roobert/consul-server:0.5.1-master && ./server/run.sh
+docker exec consul-agent ping -c5 consul-agent
 ```
 
 #### client
 ```
-git pull roobert/consul-agent:0.5.1-master  && ./agent/run.sh
+git pull roobert/consul-agent:0.5.1-master  && ./agent/run.sh &
+docker exec consul-agent ping -c5 consul-server
 ```
 
 ### docker compose
@@ -43,7 +47,13 @@ git pull roobert/consul-agent:0.5.1-master  && ./agent/run.sh
 ```
 docker-compose up -d
 docker exec consul_agent_1 ping -c5 consul-server.node.dc0
+docker exec consul_server_1 ping -c5 consul-server.node.dc0
+docker-compose rm --force
+```
+
+## client testing
+
+```
 ping -c5 consul-server.node.dc0
 ping -c5 consul-agent.node.dc0
-docker-compose rm --force
 ```
