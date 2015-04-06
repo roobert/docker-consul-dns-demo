@@ -12,7 +12,19 @@ echo 'server=/dc0/127.0.0.1#8600' > /etc/NetworkManager/dnsmasq.d/consul
 
 ## deploy containers
 
-pick a method:
+pick a method..
+
+### docker
+
+#### server
+```
+cd server && ./build.sh && ./run.sh
+```
+
+#### client
+```
+cd agent && ./build.sh && ./run.sh
+```
 
 ### docker registry
 
@@ -34,16 +46,4 @@ docker exec consul_agent_1 ping -c5 consul-server.node.dc0
 ping -c5 consul-server.node.dc0
 ping -c5 consul-agent.node.dc0
 docker-compose rm --force
-```
-
-### docker
-
-#### server
-```
-cd server && ./build.sh && ./run.sh
-```
-
-#### client
-```
-cd agent && ./build.sh && ./run.sh
 ```
