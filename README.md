@@ -10,7 +10,9 @@ echo 'server=/dc0/127.0.0.1#8600' > /etc/NetworkManager/dnsmasq.d/consul
 /etc/init.d/network-manager restart
 ```
 
-## depoy containers
+## deploy containers
+
+pick a method:
 
 ### docker registry
 
