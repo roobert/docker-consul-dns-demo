@@ -62,7 +62,7 @@ docker-compose up
 
 ```
 docker exec consul_agent_1 ping -c5 consul-server.node.dc0
-docker exec consul_server_1 ping -c5 consul-server.node.dc0
+docker exec consul_server_1 ping -c5 consul-agent.node.dc0
 ```
 
 #### destroy
