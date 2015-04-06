@@ -4,9 +4,8 @@ MAINTAINER Rob Zissou <roobert@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive 
 
-RUN apt-get install -y software-properties-common:
-RUN apt-get update
-RUN add-apt-repository ppa:roobert/consul         
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository ppa:roobert/consul
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get install -y consul
