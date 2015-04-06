@@ -11,7 +11,5 @@ RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get install -y consul
 
-ADD files/consul.json /etc/consul.d/20-agent.json
-
-CMD consul agent -config-dir /etc/consul.d/
-
+ENTRYPOINT [ "consul", "agent" ]
+CMD [ "-config-dir", "/etc/consul.d/", "-dc", "dc0", "-retry-join", "consul-server.node.dc0", "-retry-interval", "10s", "-data-dir", "/var/lib/consul" ]

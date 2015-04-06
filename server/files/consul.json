@@ -1,14 +1,10 @@
 {
-  "bootstrap": true,
-  "server": true,
-  "domain": "robs",
-  "datacenter": "robs",
-  "data_dir": "/var/lib/consul",
-  "log_level": "trace",
-  "client_addr": "0.0.0.0",
-  "ports": {
-    "dns": 53
-  },
-  "recursor": "8.8.8.8"
-  }
+#  "bootstrap": true,
+#  "server": true,
+#  "domain": "robs",
+#  "datacenter": "robs",
+#  "data_dir": "/var/lib/consul",
+#  "log_level": "trace",
+#  "client_addr": "0.0.0.0",
+#  "recursor": "8.8.8.8"
 }
